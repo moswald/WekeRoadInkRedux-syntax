@@ -1,9 +1,9 @@
 {
   "name": "vink-syntax",
   "theme": "syntax",
-  "version": "0.0.0",
-  "description": "A short description of your syntax theme",
-  "repository": "https://github.com/atom/vink-syntax",
+  "version": "0.0.1",
+  "description": "The Vink theme is a modified version of [WekeRoad Ink](https://studiostyl.es/schemes/wekeroad-ink) theme.",
+  "repository": "https://github.com/JoeRobich/vink-syntax",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
