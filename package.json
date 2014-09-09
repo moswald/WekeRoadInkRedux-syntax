@@ -1,9 +1,9 @@
 {
-  "name": "vink-syntax",
+  "name": "WekeRoadInkRedux-syntax",
   "theme": "syntax",
-  "version": "0.0.3",
-  "description": "The Vink theme is a modified version of the WekeRoad Ink theme. (https://studiostyl.es/schemes/wekeroad-ink)",
-  "repository": "https://github.com/JoeRobich/vink-syntax",
+  "version": "0.1.0",
+  "description": "The WekeRoad Ink Redux theme is a modified version of the WekeRoad Ink theme. (https://studiostyl.es/schemes/wekeroad-ink)",
+  "repository": "https://github.com/moswald/WekeRoadInkRedux-syntax",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
