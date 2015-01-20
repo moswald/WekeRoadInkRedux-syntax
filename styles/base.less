@@ -1,14 +1,16 @@
 @import "syntax-variables";
 
-.editor-colors {
-  background-color: @syntax-background-color;
-  color: @syntax-text-color;
-}
+//
+// this block styles the *editor*
+//
+:host {
+    background-color: @syntax-background-color;
+    color: @syntax-text-color;
 
-.editor {
-  background-color: @syntax-background-color;
-  color: @syntax-text-color;
-  font-weight: bold;
+    .is-focused .selection .region {
+        background-color: @syntax-selection-color;
+        font-style: bold;
+    }
 
   .wrap-guide {
     background-color: @syntax-wrap-guide-color;
@@ -30,15 +32,16 @@
     color: @syntax-gutter-text-color;
 
     .line-number {
+    color: @syntax-gutter-text-color;
       &.cursor-line {
         background-color: @syntax-gutter-background-color-selected;
         color: @syntax-gutter-text-color-selected;
       }
-
-      &.cursor-line-no-selection {
-        color: @syntax-gutter-text-color-selected;
-      }
     }
+  }
+
+ .atom-text-editor[mini] .scroll-view {
+      padding-left: 1px;
   }
 
   .gutter .line-number.folded,
@@ -58,80 +61,96 @@
   .selection .region {
     background-color: @syntax-selection-color;
   }
+
+  // not sure why I can't style the background here...
+  .search-results .marker .region {
+      border: 1px solid @syntax-result-marker-color;
+  }
+
+  .search-results .marker.current-result .region {
+      border: 1px solid @syntax-result-marker-color-selected;
+  }
 }
 
-.editor .search-results .marker .region {
-  background-color: transparent;
-  border: 1px solid @syntax-result-marker-color;
-}
+//
+// everything after this point styles the *syntax*
+//
 
-.editor .search-results .marker.current-result .region {
-  border: 1px solid @syntax-result-marker-color-selected;
+.meta.structure.dictionary.json {
+    & > .string.quoted.json {
+        color: @light-orange;
+    }
+
+    & > .value.json > .string.json {
+        color: @string;
+    }
 }
 
 .comment {
-  color: @gray;
+  color: @comment;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .entity {
   &.name.type {
-    color: white;
+    color: magenta;
 
     &.class {
-      color: @yellow;
+      color: magenta;
     }
   }
 
   &.other.inherited-class {
-    color: @green;
+    color: magenta;
   }
 }
 
 .keyword {
-  color: @orange;
+  color: magenta;
 
   &.control {
-    color: @orange;
+    color: @dark-orange;
   }
 
   &.operator {
-    color: white;
+    color: @syntax-text-color;
 
     &.new {
-      color: @orange;
+      color: magenta;
     }
   }
 
   &.other.special-method {
-    color: @blue;
+    color: magenta;
   }
 
   &.other.unit {
-    color: @blue;
+    color: lighten(@blue, 15%);
   }
 }
 
 .storage {
-  color: @orange;
+  color: @dark-orange;
 
   &.type {
-    color: @yellow;
+    color: @light-orange;
 
     &.function, &.class {
-      color: @orange;
+      color: magenta;
     }
   }
 }
 
 .constant {
-  color: white;
+  color: magenta;
 
   &.preprocessor {
-    color: @orange;
+    color: magenta;
   }
 
   &.character.escape {
-    color: @green;
+    color: magenta;
   }
 
   &.numeric {
@@ -139,23 +158,23 @@
   }
 
   &.other.rgb-value {
-    color: @blue;
+    color: magenta;
   }
 
   &.other.color {
-    color: @blue;
+    color: magenta;
   }
 
   &.other.symbol {
-    color: @green;
+    color: magenta;
   }
 }
 
 .variable {
-  color: white;
+  color: @syntax-text-color;
 
   &.interpolation {
-    color: darken(@red, 10%);
+    color: magenta;
   }
 
   &.parameter.function {
@@ -164,37 +183,39 @@
 }
 
 .invalid.illegal {
-  background-color: @red;
+  background-color: @light-red;
   color: @syntax-background-color;
 }
 
 .string {
-  color: @green;
-
+  color: @lime-green;
 
   &.regexp {
+      color: @light-red;
 
     .source.ruby.embedded {
-      color: @orange;
+      color: @dark-orange;
     }
   }
 
   &.other.link {
-    color: @red;
+    color: @light-red;
   }
 }
 
 .punctuation {
   &.class {
-    color: white;
+    color: @syntax-text-color;
   }
   &.definition {
     &.comment {
-      color: @gray;
+      color: @green;
+      font-style: italic;
+      font-weight: bold;
     }
 
     &.string {
-      color: @green;
+      color: @lime-green;
     }
 
     &.variable,
@@ -205,7 +226,7 @@
 
     &.heading,
     &.identity {
-      color: @blue;
+      color: magenta;
     }
 
     &.bold {
@@ -214,86 +235,85 @@
     }
 
     &.italic {
-      color: @purple;
+      color: @brick-red;
       font-style: italic;
     }
   }
 
   &.section.embedded {
-    color: darken(@red, 10%);
+    color: darken(@light-red, 10%);
   }
 
 }
 
 .support {
   &.class {
-    color: @yellow;
+    color: magenta;
   }
 
   &.function  {
-    color: white;
+    color: @syntax-text-color;
 
     &.any-method {
-      color: @orange;
+      color: magenta;
     }
   }
 
   &.constant {
-    color: white;
+    color: @syntax-text-color;
   }
 }
 
 .entity {
   &.name {
-    color: white;
   }
 
   &.name.class, &.name.type, &.name.type.class {
-    color: @yellow;
+    color: @light-orange;
   }
 
   &.name.section {
-    color: @blue;
+    color: magenta;
   }
 
   &.name.tag {
-    color: @orange;
+    color: @dark-orange;
   }
 
   &.other.attribute-name {
-    color: white;
+    color: magenta;
 
     &.class {
-      color: @yellow;
+      color: @light-orange;
     }
   }
 }
 
 .meta {
-  color: white;
+  color: @syntax-text-color;
 
   &.id {
-    color: @green;
+    color: magenta;
   }
 
   &.class {
-    color: @yellow;
+    color: @syntax-text-color;
 
     &.body {
-      color: white;
+      color: @syntax-text-color;
     }
 
     &.punctuation {
-      color: white;
+      color: magenta;
     }
   }
 
   &.return-type {
-    color: @yellow;
+    color: @light-orange;
   }
 
   &.link {
-    color: @orange;
+    color: @dark-orange;
   }
 
   &.require {
@@ -301,11 +321,11 @@
   }
 
   &.selector {
-    color: @purple;
+    color: @brick-red;
   }
 
   &.separator {
-    background-color: @gray;
+    background-color: @syntax-background-color;
     color: @syntax-text-color;
   }
 }
@@ -316,20 +336,20 @@
 
 .markup {
   &.bold {
-    color: @orange;
+    color: @dark-orange;
     font-style: bold;
   }
 
   &.changed {
-    color: @purple;
+    color: @brick-red;
   }
 
   &.deleted {
-    color: @red;
+    color: @light-red;
   }
 
   &.italic {
-    color: @purple;
+    color: @brick-red;
     font-style: italic;
   }
 
@@ -342,11 +362,11 @@
   }
 
   &.list {
-    color: @red;
+    color: @light-red;
   }
 
   &.quote {
-    color: @orange;
+    color: @dark-orange;
   }
 
   &.raw.inline {
@@ -359,8 +379,4 @@
   &.heading {
     color: @green;
   }
-}
-
-.editor.mini .scroll-view {
-  padding-left: 1px;
 }
