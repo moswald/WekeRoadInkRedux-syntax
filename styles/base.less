@@ -62,14 +62,21 @@
     background-color: @syntax-selection-color;
   }
 
-  // not sure why I can't style the background here...
-  .search-results .marker .region {
-      border: 1px solid @syntax-result-marker-color;
-  }
-
   .search-results .marker.current-result .region {
       border: 1px solid @syntax-result-marker-color-selected;
   }
+}
+
+atom-text-editor::shadow {
+    .find-result .region {
+        background-color: fade(@syntax-result-marker-color, 40%);
+        border: 1px solid @syntax-result-marker-color;
+    }
+
+    .current-result .region {
+        background-color: fade(@syntax-result-marker-color-selected, 30%);
+        border: 1px solid @syntax-result-marker-color-selected;
+    }
 }
 
 //
