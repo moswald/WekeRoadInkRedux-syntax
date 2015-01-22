@@ -107,26 +107,8 @@ atom-text-editor::shadow {
   font-weight: bold;
 }
 
-.entity {
-  &.name.type {
-    color: magenta;
-
-    &.class {
-      color: magenta;
-    }
-  }
-
-  &.other.inherited-class {
-    color: magenta;
-  }
-}
-
 .keyword {
-  color: magenta;
-
-  &.control {
-    color: @keyword;
-  }
+  color: @keyword;
 
   &.operator {
     color: @syntax-text-color;
@@ -134,6 +116,10 @@ atom-text-editor::shadow {
     &.new {
       color: magenta;
     }
+  }
+
+  &.definition {
+      color: @light-orange;
   }
 
   &.other.special-method {
@@ -218,51 +204,25 @@ atom-text-editor::shadow {
   }
 }
 
-.punctuation {
-  &.class {
-    color: @syntax-text-color;
-  }
-  &.definition {
-    &.comment {
-      color: @green;
-      font-style: italic;
-      font-weight: bold;
+.source {
+    &.gfm .markup {
+        -webkit-font-smoothing: auto;
+        &.heading {
+            color: @green;
+        }
     }
 
-    &.keyword {
+    & .punctuation.definition.entity {
         color: @keyword;
     }
 
-    &.string {
-      color: @lime-green;
+    &.ini {
+        color: @medium-blue;
     }
 
-    &.variable,
-    &.parameters,
-    &.array {
-      color: @syntax-text-color;
+    & .punctuation {
+        color: @syntax-text-color;
     }
-
-    &.heading,
-    &.identity {
-      color: magenta;
-    }
-
-    &.bold {
-      color: @light-orange;
-      font-style: bold;
-    }
-
-    &.italic {
-      color: @brick-red;
-      font-style: italic;
-    }
-  }
-
-  &.section.embedded {
-    color: darken(@light-red, 10%);
-  }
-
 }
 
 .support {
@@ -292,7 +252,7 @@ atom-text-editor::shadow {
   }
 
   &.name.section {
-    color: magenta;
+    color: @dark-orange;
   }
 
   &.name.tag {
@@ -393,9 +353,48 @@ atom-text-editor::shadow {
   }
 }
 
-.source.gfm .markup {
-  -webkit-font-smoothing: auto;
-  &.heading {
-    color: @green;
-  }
+.punctuation {
+    &.class {
+        color: @syntax-text-color;
+    }
+    &.definition {
+        &.comment {
+            color: @green;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        &.keyword {
+            color: @keyword;
+        }
+
+        &.string {
+            color: @lime-green;
+        }
+
+        &.variable,
+        &.parameters,
+        &.array {
+            color: @syntax-text-color;
+        }
+
+        &.heading,
+        &.identity {
+            color: magenta;
+        }
+
+        &.bold {
+            color: @light-orange;
+            font-style: bold;
+        }
+
+        &.italic {
+            color: @brick-red;
+            font-style: italic;
+        }
+    }
+
+    &.section.embedded {
+        color: darken(@light-red, 10%);
+    }
 }
