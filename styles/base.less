@@ -86,10 +86,18 @@ atom-text-editor::shadow {
 .meta.structure.dictionary.json {
     & > .string.quoted.json {
         color: @light-orange;
+
+        & > .punctuation.definition.string {
+            color: @light-orange;
+        }
     }
 
     & > .value.json > .string.json {
         color: @string;
+
+        & > .punctuation.definition.string {
+            color: @string;
+        }
     }
 }
 
