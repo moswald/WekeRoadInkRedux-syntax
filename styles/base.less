@@ -117,7 +117,7 @@ atom-text-editor::shadow {
   color: magenta;
 
   &.control {
-    color: @dark-orange;
+    color: @keyword;
   }
 
   &.operator {
@@ -221,6 +221,10 @@ atom-text-editor::shadow {
       font-weight: bold;
     }
 
+    &.keyword {
+        color: @keyword;
+    }
+
     &.string {
       color: @lime-green;
     }
@@ -262,7 +266,7 @@ atom-text-editor::shadow {
     color: @syntax-text-color;
 
     &.any-method {
-      color: magenta;
+      color: @keyword;
     }
   }
 
@@ -288,7 +292,7 @@ atom-text-editor::shadow {
   }
 
   &.other.attribute-name {
-    color: magenta;
+    color: @dark-orange;
 
     &.class {
       color: @light-orange;
