@@ -77,29 +77,16 @@ atom-text-editor::shadow {
         background-color: fade(@syntax-result-marker-color-selected, 30%);
         border: 1px solid @syntax-result-marker-color-selected;
     }
+
+    .bracket-matcher .region {
+        background-color: fade(@light-red, 40%);
+        border: 1px solid @light-red;
+    }
 }
 
 //
 // everything after this point styles the *syntax*
 //
-
-.meta.structure.dictionary.json {
-    & > .string.quoted.json {
-        color: @light-orange;
-
-        & > .punctuation.definition.string {
-            color: @light-orange;
-        }
-    }
-
-    & > .value.json > .string.json {
-        color: @string;
-
-        & > .punctuation.definition.string {
-            color: @string;
-        }
-    }
-}
 
 .comment {
   color: @comment;
@@ -145,6 +132,10 @@ atom-text-editor::shadow {
 
 .constant {
   color: magenta;
+
+  &.language {
+      color: @keyword;
+  }
 
   &.preprocessor {
     color: magenta;
@@ -260,10 +251,14 @@ atom-text-editor::shadow {
   }
 
   &.other.attribute-name {
-    color: @dark-orange;
+    color: @light-orange;
 
     &.class {
       color: @light-orange;
+    }
+
+    & > .punctuation.definition.entity {
+        color: @light-orange;
     }
   }
 }
@@ -287,6 +282,26 @@ atom-text-editor::shadow {
     }
   }
 
+  &.namespace-block, & .class-struct-block {
+      & > .storage.type {
+          color: @keyword;
+      }
+  }
+
+  &.preprocessor {
+      color: @preprocessor;
+      font-weight: bold;
+      font-style: italic;
+
+      & .keyword {
+          color: @preprocessor;
+      }
+
+      & .function {
+          color: fade(@preprocessor, 60%);
+      }
+  }
+
   &.return-type {
     color: @light-orange;
   }
@@ -307,6 +322,28 @@ atom-text-editor::shadow {
     background-color: @syntax-background-color;
     color: @syntax-text-color;
   }
+
+  &.structure.dictionary.json {
+      & > .string.quoted.json {
+          color: @light-orange;
+
+          & > .punctuation.definition.string {
+              color: @light-orange;
+          }
+      }
+
+      & > .value.json > .string.json {
+          color: @string;
+
+          & > .punctuation.definition.string {
+              color: @string;
+          }
+      }
+  }
+}
+
+.cdata {
+    color: @dark-gray;
 }
 
 .none {
